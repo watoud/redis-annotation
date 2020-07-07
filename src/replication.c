@@ -1937,6 +1937,7 @@ long long replicationGetSlaveOffset(void) {
 /* Replication cron function, called 1 time per second. */
 void replicationCron(void) {
     /* Non blocking connection timeout? */
+    ////////////////////////////////////////////// 超时判断 /////////////////////////////////////////////////////////
     if (server.masterhost &&
         (server.repl_state == REDIS_REPL_CONNECTING ||
          server.repl_state == REDIS_REPL_RECEIVE_PONG) &&
@@ -1961,6 +1962,7 @@ void replicationCron(void) {
         redisLog(REDIS_WARNING,"MASTER timeout: no data nor PING received...");
         freeClient(server.master);
     }
+    ////////////////////////////////////////////// 超时判断 /////////////////////////////////////////////////////////
 
     /* Check if we should connect to a MASTER */
     if (server.repl_state == REDIS_REPL_CONNECT) {

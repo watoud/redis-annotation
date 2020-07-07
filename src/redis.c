@@ -1063,7 +1063,9 @@ void updateCachedTime(void) {
  * so in order to throttle execution of things we want to do less frequently
  * a macro is used: run_with_period(milliseconds) { .... }
  */
-
+ /**
+  *  根据返回值确定是否是周期时间事件
+  */
 int serverCron(struct aeEventLoop *eventLoop, long long id, void *clientData) {
     int j;
     REDIS_NOTUSED(eventLoop);
